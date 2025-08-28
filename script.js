@@ -14,3 +14,11 @@
 
         TO BE CONTINUED.......
 */
+
+let brush = document.querySelector("#brush")
+let eraser = document.querySelector("#eraser")
+let colorPalette = document.querySelector("#colorPalette")
+let eyeDropper = document.querySelector("#eyeDropper")
+let clearCanvas = document.querySelector("#clearCanvas")
+let saveDrawing = document.querySelector("#saveDrawing")
+
