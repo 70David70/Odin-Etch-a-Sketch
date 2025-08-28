@@ -15,10 +15,16 @@
         TO BE CONTINUED.......
 */
 
-let brush = document.querySelector("#brush")
-let eraser = document.querySelector("#eraser")
-let colorPalette = document.querySelector("#colorPalette")
-let eyeDropper = document.querySelector("#eyeDropper")
-let clearCanvas = document.querySelector("#clearCanvas")
-let saveDrawing = document.querySelector("#saveDrawing")
+let brushBtn = document.querySelector("#brush")
+let eraserBtn = document.querySelector("#eraser")
+let colorPaletteBtn = document.querySelector("#colorPalette")
+let eyeDropperBtn = document.querySelector("#eyeDropper")
+let clearCanvasBtn = document.querySelector("#clearCanvas")
+let saveDrawingBtn = document.querySelector("#saveDrawing")
+
+
+let chosenBrush = {
+    activeTool: "brush", // "brush" | "eraser" | "eyeDropper"
+    color: "#000000"
+}
 
