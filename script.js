@@ -29,7 +29,7 @@ let chosenBrush = {
     color: "#000000"
 }
 
-// now to create the 
+// now to create the canvas
 let drawingBox = document.querySelector("#drawing-box")
 
 //calculate the div size
@@ -37,9 +37,23 @@ let canvasSize = parseInt(window.getComputedStyle(drawingBox).width);
 let gridSize = parseInt(gridSlider.value);
 let smallDivSizes =  canvasSize / gridSize;
 
+createPixels(gridSize, smallDivSizes)
 gridSlider.addEventListener("input", ()=> {
     gridSize = parseInt(gridSlider.value);
     smallDivSizes =  canvasSize / gridSize;
-    console.log(smallDivSizes)
+    drawingBox.innerHTML = "";
+    createPixels(gridSize, smallDivSizes);
+    console.log(smallDivSizes);
 })
 console.log(smallDivSizes)
+
+//create the pixels
+function createPixels(gridSize, pixelSize) {
+    for (let i = 0; i < (gridSize * gridSize); i++) {
+        let pixel = document.createElement("div")
+        pixel.style.width = (100 / gridSize) + "%";
+        pixel.style.height = (100 / gridSize) + "%";
+        pixel.style.boxSizing = "border-box";
+        drawingBox.appendChild(pixel)
+    }
+}

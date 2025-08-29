@@ -18,8 +18,12 @@ body {
     border: 2px solid black;
     width: 100%;
     height: 100%;
-    margin: 5px
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
 }
 #drawing-box div {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.055);
+    background-color: white;
+    box-sizing: border-box;
 }
