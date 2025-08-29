@@ -15,6 +15,7 @@
         TO BE CONTINUED.......
 */
 
+let body = document.querySelector("body")
 let brushBtn = document.querySelector("#brush")
 let eraserBtn = document.querySelector("#eraser")
 let colorPaletteBtn = document.querySelector("#colorPalette")
@@ -32,7 +33,7 @@ let chosenBrush = {
 // now to create the canvas
 let drawingBox = document.querySelector("#drawing-box")
 
-//calculate the div size
+//calculate the pixel size
 let canvasSize = parseInt(window.getComputedStyle(drawingBox).width);
 let gridSize = parseInt(gridSlider.value);
 let smallDivSizes =  canvasSize / gridSize;
@@ -43,9 +44,7 @@ gridSlider.addEventListener("input", ()=> {
     smallDivSizes =  canvasSize / gridSize;
     drawingBox.innerHTML = "";
     createPixels(gridSize, smallDivSizes);
-    console.log(smallDivSizes);
 })
-console.log(smallDivSizes)
 
 //create the pixels
 function createPixels(gridSize, pixelSize) {
@@ -57,3 +56,43 @@ function createPixels(gridSize, pixelSize) {
         drawingBox.appendChild(pixel)
     }
 }
+
+// Make buttons work
+body.addEventListener("click", (e)=> {
+    if (e.target.id == "brush") {
+        chosenBrush.activeTool = "brush";
+        e.target.style.border = "3px solid yellow";
+        chosenBrush.color = colorPaletteBtn.value;
+
+        eraserBtn.style.border = "";
+        eyeDropperBtn.style.border = "";
+    }
+    else if (e.target.id == "eraser") {
+        chosenBrush.activeTool = "eraser";
+        e.target.style.border = "3px solid yellow"
+        chosenBrush.color = "#FFFFFF";
+
+        brushBtn.style.border = "";
+        eyeDropperBtn.style.border = "";
+    }
+    else if (e.target.id == "eyeDropper") {
+        chosenBrush.activeTool == "eyedropper";
+        e.target.style.border = "3px solid yellow"
+
+        eraserBtn.style.border = "";
+        brushBtn.style.border = "";
+    }
+    else if (e.target.id == "clearCanvas") {
+        drawingBox.innerHTML = "";
+        createPixels(gridSize, smallDivSizes);
+    }
+    else if (e.target.id == "saveDrawing") {
+        //to do saveDrawing function
+    }
+})
+
+// Add drawing ability
+
+drawingBox.addEventListener("mousedown", (e)=> {
+    
+})
