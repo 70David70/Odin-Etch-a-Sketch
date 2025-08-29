@@ -21,6 +21,7 @@ let colorPaletteBtn = document.querySelector("#colorPalette")
 let eyeDropperBtn = document.querySelector("#eyeDropper")
 let clearCanvasBtn = document.querySelector("#clearCanvas")
 let saveDrawingBtn = document.querySelector("#saveDrawing")
+let gridSlider = document.querySelector("#gridSize")
 
 
 let chosenBrush = {
@@ -28,3 +29,17 @@ let chosenBrush = {
     color: "#000000"
 }
 
+// now to create the 
+let drawingBox = document.querySelector("#drawing-box")
+
+//calculate the div size
+let canvasSize = parseInt(window.getComputedStyle(drawingBox).width);
+let gridSize = parseInt(gridSlider.value);
+let smallDivSizes =  canvasSize / gridSize;
+
+gridSlider.addEventListener("input", ()=> {
+    gridSize = parseInt(gridSlider.value);
+    smallDivSizes =  canvasSize / gridSize;
+    console.log(smallDivSizes)
+})
+console.log(smallDivSizes)
