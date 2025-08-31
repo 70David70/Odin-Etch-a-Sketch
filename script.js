@@ -91,8 +91,13 @@ body.addEventListener("click", (e)=> {
     }
 })
 
+// make the color buttons functional
+body.addEventListener("input", (e)=> {
+    if (e.target.id == "colorPalette" && chosenBrush.activeTool == "brush") chosenBrush.color = e.target.value
+})
+
 // Add drawing ability
 
 drawingBox.addEventListener("mousedown", (e)=> {
-    
+    e.target.style.backgroundColor = chosenBrush.color
 })
