@@ -24,9 +24,11 @@ let clearCanvasBtn = document.querySelector("#clearCanvas")
 let saveDrawingBtn = document.querySelector("#saveDrawing")
 let gridSlider = document.querySelector("#gridSize")
 
+let mouseDown = false;
+
 
 let chosenBrush = {
-    activeTool: "brush", // "brush" | "eraser" | "eyeDropper"
+    activeTool: "Not chosen", // "brush" | "eraser" | "eyeDropper"
     color: "#000000"
 }
 
@@ -58,7 +60,7 @@ function createPixels(gridSize, pixelSize) {
 }
 
 // Make buttons work
-body.addEventListener("click", (e)=> {
+body.addEventListener("mousedown", (e)=> {
     if (e.target.id == "brush") {
         chosenBrush.activeTool = "brush";
         e.target.style.border = "3px solid yellow";
@@ -76,7 +78,7 @@ body.addEventListener("click", (e)=> {
         eyeDropperBtn.style.border = "";
     }
     else if (e.target.id == "eyeDropper") {
-        chosenBrush.activeTool == "eyedropper";
+        chosenBrush.activeTool = "eyeDropper";
         e.target.style.border = "3px solid yellow"
 
         eraserBtn.style.border = "";
@@ -96,8 +98,37 @@ body.addEventListener("input", (e)=> {
     if (e.target.id == "colorPalette" && chosenBrush.activeTool == "brush") chosenBrush.color = e.target.value
 })
 
+//listen to the mouse
+    drawingBox.addEventListener("mousedown", ()=> mouseDown = true);
+    drawingBox.addEventListener("mouseup", ()=> mouseDown = false);
+
 // Add drawing ability
 
-drawingBox.addEventListener("mousedown", (e)=> {
-    e.target.style.backgroundColor = chosenBrush.color
+drawingBox.addEventListener("mouseover", (e)=> {
+    
+    if (mouseDown && (chosenBrush.activeTool == "brush" || chosenBrush.activeTool == "eraser")) {
+        e.target.style.backgroundColor = chosenBrush.color
+        console.log(chosenBrush.activeTool)
+    }
+    else if (chosenBrush.activeTool == "eyeDropper") {
+        console.log("the eye dropper been used")
+        colorPaletteBtn.value = toHex(e.target.style.backgroundColor)
+        chosenBrush.color = colorPaletteBtn.value;
+    }
+    
 })
+
+//function from copilot
+function toHex(rgbString) {
+    // Match rgb or rgba string and extract the numbers
+    const result = rgbString.match(/\d+/g);
+    if (!result || result.length < 3) return "#000000";
+    // Parse the first three values as integers for r, g, b
+    const [r, g, b] = result.slice(0, 3).map(Number);
+    return (
+        "#" +
+        [r, g, b]
+            .map((x) => x.toString(16).padStart(2, "0"))
+            .join("")
+    );
+}
