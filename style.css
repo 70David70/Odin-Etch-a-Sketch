@@ -74,9 +74,9 @@ button {
     box-shadow: 0 0 15px;
 }
 .elements-background {
-    background-color: rgba(14, 11, 11, 0.692);
+    background-color: rgba(27, 18, 27, 0.541);
     padding: 10px;
-    border: 2px solid black;
+    border: 1px solid rgb(141, 141, 141);
     border-radius: 10px;
 }
 #tools {
@@ -110,11 +110,12 @@ button {
     background-color: rgba(246, 255, 240, 0.178);
 }
 
-#grid-slider {
+#grid-slider, #actions {
     display: flex;
     align-items: center;
     justify-content: center;
     color: antiquewhite;
+    width: 20vw;
 }
 #grid-slider p {
     color: white;
