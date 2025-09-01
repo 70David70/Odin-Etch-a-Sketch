@@ -8,14 +8,18 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <div id="tools">
+        <div id="tools" class="elements-background">
             <h4>Tools</h4>
-            <button id="brush">Brush</button>
-            <button id="eraser">Eraser</button>
+            <div id="brushes">
+                <button id="brush">Brush</button>
+                <button id="eraser">Eraser</button>
+            </div>
             
             <h4>Colors</h4>
-            <input type="color" id="colorPalette">
-            <button id="eyeDropper">Color picker</button>
+            <div id="colors">
+                <input type="color" id="colorPalette">
+                <button id="eyeDropper">Color picker</button>
+            </div>
         </div>
 
         <div id="container">
@@ -29,9 +33,10 @@
 
             </div>
             
-            <div id="grid-slider">
+            <div id="grid-slider" class="elements-background">
                 <label for="gridSize">Grid:</label>
                 <input type="range" min="16" max="128" step="2" id="gridSize">
+                <p id="canvasSliderValue"></p>
             </div>
 
         </div>

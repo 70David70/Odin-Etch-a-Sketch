@@ -1,8 +1,19 @@
 body {
-    background-color: rgb(119, 119, 119);
+    background-color: rgb(34, 34, 37);
     display: flex;
     padding: 2vh;  
     gap: 20%;
+}
+
+button {
+    border: none;
+    padding: 5px;
+    color: rgba(211, 211, 211, 0.856);
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 1vh;
+    background-color: black;
+    border: 1px solid white;
 }
 
 #container {
@@ -15,7 +26,8 @@ body {
     align-items: center;
 }
 #drawing-box {
-    border: 2px solid black;
+    border: 5px solid black;
+    border-radius: 20%;
     width: 100%;
     height: 100%;
     margin: 5px;
@@ -26,4 +38,54 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.055);
     background-color: white;
     box-sizing: border-box;
+}
+
+.chosen {
+    border: 5px solid rgba(230, 230, 36, 0.692);
+}
+.elements-background {
+    background-color: rgba(73, 68, 68, 0.301);
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+#tools {
+    box-sizing: border-box;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+#tools h4{
+    align-self: baseline;
+    display: block;
+    font-size: larger;
+    color: aliceblue;
+}
+
+#colors {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+}
+#colors input{
+    border: none;
+    padding: none;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+#colors input:hover {
+    background-color: rgba(246, 255, 240, 0.178);
+}
+
+#grid-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#grid-slider p {
+    color: white;
+    font-size: large;
 }

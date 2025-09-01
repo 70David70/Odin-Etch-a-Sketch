@@ -34,15 +34,18 @@ let chosenBrush = {
 
 // now to create the canvas
 let drawingBox = document.querySelector("#drawing-box")
+let canvasSliderValue = document.querySelector("#canvasSliderValue")
 
 //calculate the pixel size
 let canvasSize = parseInt(window.getComputedStyle(drawingBox).width);
 let gridSize = parseInt(gridSlider.value);
+canvasSliderValue.textContent = gridSize;
 let smallDivSizes =  canvasSize / gridSize;
 
 createPixels(gridSize, smallDivSizes)
 gridSlider.addEventListener("input", ()=> {
     gridSize = parseInt(gridSlider.value);
+    canvasSliderValue.textContent = gridSize;
     smallDivSizes =  canvasSize / gridSize;
     drawingBox.innerHTML = "";
     createPixels(gridSize, smallDivSizes);
@@ -65,26 +68,26 @@ function createPixels(gridSize, pixelSize) {
 body.addEventListener("mousedown", (e)=> {
     if (e.target.id == "brush") {
         chosenBrush.activeTool = "brush";
-        e.target.style.border = "3px solid yellow";
+        e.target.classList = "chosen";
         chosenBrush.color = colorPaletteBtn.value;
 
-        eraserBtn.style.border = "";
-        eyeDropperBtn.style.border = "";
+        eraserBtn.classList = "";
+        eyeDropperBtn.classList = "";
     }
     else if (e.target.id == "eraser") {
         chosenBrush.activeTool = "eraser";
-        e.target.style.border = "3px solid yellow"
+        e.target.classList = "chosen";
         chosenBrush.color = "#FFFFFF";
 
-        brushBtn.style.border = "";
-        eyeDropperBtn.style.border = "";
+        brushBtn.classList = "";
+        eyeDropperBtn.classList = "";
     }
     else if (e.target.id == "eyeDropper") {
         chosenBrush.activeTool = "eyeDropper";
-        e.target.style.border = "3px solid yellow"
+        e.target.classList = "chosen";
 
-        eraserBtn.style.border = "";
-        brushBtn.style.border = "";
+        eraserBtn.classList = "";
+        brushBtn.classList = "";
     }
     else if (e.target.id == "clearCanvas") {
         drawingBox.innerHTML = "";
