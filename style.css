@@ -4,6 +4,23 @@ body {
     padding: 2vh;  
     gap: 20%;
 }
+#tools, #container {
+    z-index: 1;
+}
+#background-element {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/backgroundImage.png);
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    pointer-events: none; /* So it doesn't block clicks */
+}
 
 button {
     border: none;
