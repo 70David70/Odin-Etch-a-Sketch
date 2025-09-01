@@ -55,6 +55,8 @@ function createPixels(gridSize, pixelSize) {
         pixel.style.width = (100 / gridSize) + "%";
         pixel.style.height = (100 / gridSize) + "%";
         pixel.style.boxSizing = "border-box";
+        pixel.setAttribute("draggable", "false");
+        pixel.addEventListener("dragstart", (e) => e.preventDefault());
         drawingBox.appendChild(pixel)
     }
 }
@@ -90,6 +92,7 @@ body.addEventListener("mousedown", (e)=> {
     }
     else if (e.target.id == "saveDrawing") {
         //to do saveDrawing function
+        saveDrawing()
     }
 })
 
@@ -131,4 +134,32 @@ function toHex(rgbString) {
             .map((x) => x.toString(16).padStart(2, "0"))
             .join("")
     );
+}
+
+function saveDrawing() {
+    const gridSize = parseInt(gridSlider.value);
+    const scale = 20; // How much bigger you want the saved image (20x20 per pixel)
+    const canvas = document.createElement("canvas");
+    canvas.width = gridSize * scale;
+    canvas.height = gridSize * scale;
+    const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
+
+    const pixels = drawingBox.children;
+
+    // Draw each pixel as a big square
+    for (let y = 0; y < gridSize; y++) {
+        for (let x = 0; x < gridSize; x++) {
+            const pixel = pixels[y * gridSize + x];
+            let color = pixel.style.backgroundColor || "rgb(255,255,255)";
+            ctx.fillStyle = color;
+            ctx.fillRect(x * scale, y * scale, scale, scale);
+        }
+    }
+
+    // Create a download link
+    const link = document.createElement("a");
+    link.download = "etch-a-sketch.png";
+    link.href = canvas.toDataURL();
+    link.click();
 }
