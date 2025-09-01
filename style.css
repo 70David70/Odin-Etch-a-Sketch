@@ -3,7 +3,18 @@ body {
     display: flex;
     padding: 2vh;  
     gap: 20%;
+    animation: clearUp 0.5s ease-in forwards;
+    overflow: hidden;
 }
+@keyframes clearUp {
+  from {
+    filter: blur(10px);
+  }
+  to {
+    filter: blur(0);
+  }
+}
+
 #tools, #container {
     z-index: 1;
 }
@@ -16,6 +27,7 @@ body {
     height: 100vh;
     background-image: url(/backgroundImage.png);
     background-size: cover;
+    opacity: 10%;
     background-position: center;
     filter: blur(10px);
     -webkit-filter: blur(10px);
@@ -44,7 +56,7 @@ button {
 }
 #drawing-box {
     border: 5px solid black;
-    border-radius: 20%;
+    box-shadow: 0 0 15px;
     width: 100%;
     height: 100%;
     margin: 5px;
@@ -58,10 +70,11 @@ button {
 }
 
 .chosen {
-    border: 5px solid rgba(230, 230, 36, 0.692);
+    border: 5px solid rgba(255, 255, 20, 0.932);
+    box-shadow: 0 0 15px;
 }
 .elements-background {
-    background-color: rgba(73, 68, 68, 0.301);
+    background-color: rgba(14, 11, 11, 0.692);
     padding: 10px;
     border: 2px solid black;
     border-radius: 10px;
@@ -101,6 +114,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: antiquewhite;
 }
 #grid-slider p {
     color: white;
