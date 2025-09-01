@@ -121,7 +121,7 @@ drawingBox.addEventListener("mouseover", (e)=> {
     
 })
 
-//function from copilot
+//functions from copilot
 function toHex(rgbString) {
     // Match rgb or rgba string and extract the numbers
     const result = rgbString.match(/\d+/g);
