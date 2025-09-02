@@ -25,7 +25,7 @@ let saveDrawingBtn = document.querySelector("#saveDrawing")
 let gridSlider = document.querySelector("#gridSize")
 
 let mouseDown = false;
-
+let drawingMode = true;
 
 let chosenBrush = {
     activeTool: "Not chosen", // "brush" | "eraser" | "eyeDropper"
@@ -97,6 +97,16 @@ body.addEventListener("mousedown", (e)=> {
         //to do saveDrawing function
         saveDrawing()
     }
+    else if (e.target.id == "mode") {
+        if (e.target.textContent == "Classic") {
+            drawingMode = true;
+            e.target.textContent = "Draw";
+        }
+        else {
+            drawingMode = false;
+            e.target.textContent = "Classic";
+        }
+    }
 })
 
 // make the color buttons functional
@@ -106,23 +116,22 @@ body.addEventListener("input", (e)=> {
 
 //listen to the mouse
     drawingBox.addEventListener("mousedown", ()=> mouseDown = true);
-    drawingBox.addEventListener("mouseup", ()=> mouseDown = false);
+    drawingBox.addEventListener("mouseup", ()=> mouseDown = false)
 
 // Add drawing ability
 
 drawingBox.addEventListener("mouseover", (e)=> {
     
-    if (mouseDown && (chosenBrush.activeTool == "brush" || chosenBrush.activeTool == "eraser")) {
+    if ((mouseDown || !drawingMode) && (chosenBrush.activeTool == "brush" || chosenBrush.activeTool == "eraser")) {
         e.target.style.backgroundColor = chosenBrush.color
         console.log(chosenBrush.activeTool)
     }
-    else if (chosenBrush.activeTool == "eyeDropper") {
-        console.log("the eye dropper been used")
-        colorPaletteBtn.value = toHex(e.target.style.backgroundColor)
-        chosenBrush.color = colorPaletteBtn.value;
-    }
-    
 })
+drawingBox.addEventListener("click", (e)=> {
+        if (chosenBrush.activeTool == "eyeDropper") {
+            colorPaletteBtn.value = toHex(e.target.style.backgroundColor)
+            chosenBrush.color = colorPaletteBtn.value
+        }})
 
 //functions from copilot
 function toHex(rgbString) {

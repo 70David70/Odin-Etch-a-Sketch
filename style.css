@@ -110,7 +110,7 @@ button {
     background-color: rgba(246, 255, 240, 0.178);
 }
 
-#grid-slider, #actions {
+#grid-slider {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,4 +120,9 @@ button {
 #grid-slider p {
     color: white;
     font-size: large;
+}
+#actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
